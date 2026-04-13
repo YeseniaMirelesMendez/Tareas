@@ -1,5 +1,5 @@
 [project]
-name = "tareas"
+name = "tarea"
 version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
@@ -8,9 +8,20 @@ dependencies = [
     "bcrypt>=5.0.0",
     "flet>=0.82.2",
     "mysql-connector-python>=9.6.0",
+    "pydantic>=2.12.5",
+    "python-dotenv>=1.2.2",
 ]
 
-[tool.uv.workspace]
-members = [
-    "Tareas",
-]
+
+
+[project.scripts]
+#aqui definimos el comando corto
+#importante: quitamos el prefijo src. porque definimos src como la raiz
+app = "main:main"
+
+[tool.uv]
+package = true
+
+#esta seccion es crucial para que python vea el contenido de src como el nivel raiz
+[tool.setuptools.package-dir]
+"" = "src"
