@@ -12,4 +12,4 @@ class TareaController:
                 return False, "El titulo es obligatorio"
             
             self.model.crear(id_usuario, titulo, desc, prio, clas)
-            return True, "Tarea guardada"
+            return True, "Tarea guardada" 
