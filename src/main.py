@@ -19,6 +19,19 @@ def start(page: ft.Page):
         # Caso 2: Dashboard
         if page.route == "/dashboard":
             page.views.append(DashboardView(page, task_ctrl))
+            def view_pop(e):
+                if len(page.views) > 1:
+                    page.views.pop()
+                    top_view = page.views[-1]
+                    page.go(top_view.route)
+                    
+                    page.on_route_change = route_change
+                    page.on_view_pop = view_pop
+                    
+                    if page.route == "/":
+                        route_change(None)
+                    else:
+                        page.go("/")
 
         # Caso de seguridad: Si algo falla, mostrar texto de error
         if not page.views:
